@@ -24,8 +24,9 @@ public class UserController {
     @RequestMapping("/user/createCard")
     public ResponseEntity<String> createCard() {
         cardService cardService = new cardService();
-        String result = cardService.chargeCard("4111111111111111", "0919", "2.00");
+        String result = cardService.newCardToken("4111111111111111", "VISA", "0919","999","123 trest", "123456","test");
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
 }
+
