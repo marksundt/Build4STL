@@ -211,10 +211,11 @@ public class DaoStuff {
             rd.close();
             System.out.println("---------------------------------------------------------------------" + response);
             RedemptionCode code = new RedemptionCode();
+            //code = obj.getString("code");
 
-            code.setPhone("3148050537");
-            //  code.setCode(Math.random();
 
+            code.setCode(String.valueOf((Math.round(Math.random() * Math.pow(10, 13)))));
+            code.setPhone(String.valueOf((Math.round(Math.random() * Math.pow(10, 10)))));
             return code;
 
 
@@ -222,8 +223,8 @@ public class DaoStuff {
             e.printStackTrace();
             RedemptionCode code = new RedemptionCode();
 
-            code.setPhone("3148050537");
-            code.setCode("1234rrrr");
+            //code.setPhone("3148050537");
+            //code.setCode("1234rrrr");
   return code;
         } finally {
             if (connection != null) {
