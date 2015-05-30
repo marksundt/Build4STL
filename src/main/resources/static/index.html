@@ -15,7 +15,9 @@
 <body ng-app="WebApp" ng-cloak class="ng-cloak">
 <div ng-controller="LoginCtrl as loginCtrl" class="container">
     <ul class="nav nav-pills" role="tablist">
-        <li ng-class="{active:tab('home')}"><a href="#/">home</a></li>
+        <li ng-class="{active:tab('home')}"><a href="#/">about us</a></li>
+        <li ><a href="#/donate">donate</a></li>
+        <li ng-show="!loginCtrl.isAuth()"><a href="#/register">register</a></li>
         <li ng-show="!loginCtrl.isAuth()"><a href="#/login">login</a></li>
         <li ng-show="loginCtrl.isAuth()"><a href="" ng-click="loginCtrl.logout()">logout</a></li>
     </ul>
