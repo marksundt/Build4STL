@@ -7,8 +7,16 @@ public class User {
 
      public String name;
      public String phone;
-     public String donationAmount;
-     public String isRecurring;
+     public String email;
+
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
@@ -26,19 +34,5 @@ public class User {
         this.phone = phone;
     }
 
-    public String getDonationAmount() {
-        return donationAmount;
-    }
 
-    public void setDonationAmount(String donationAmount) {
-        this.donationAmount = donationAmount;
-    }
-
-    public String getIsRecurring() {
-        return isRecurring;
-    }
-
-    public void setIsRecurring(String isRecurring) {
-        this.isRecurring = isRecurring;
-    }
 }

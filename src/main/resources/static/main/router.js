@@ -9,6 +9,9 @@ angular
     }).when('/donate', {
         templateUrl : 'donate/donate.html',
         controller : 'DonateCtrl as donateCtrl'
+    }).when('/meal', {
+        templateUrl : 'meal/meal.html',
+        controller : 'MealCtrl as mealCtrl'
     }).when('/register', {
         templateUrl : 'register/register.html',
         controller : 'RegisterCtrl as registerCtrl'

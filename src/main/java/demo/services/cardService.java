@@ -14,25 +14,13 @@ import java.net.MalformedURLException;
 
 public class cardService {
 
-    public static void testing(String expDate, String card, String amount) {
 
-
-        String regexDate = "\\d\\d\\d\\d";
-        String chargeResponse;
-        //TODO: check that the date is valid (month is 1-12 and date is after today's date. Verify card number is valid and amount charged is a boolean in dollar format
-
-        if(expDate.matches(regexDate)) {
-
-                chargeResponse = chargeCard(card, expDate, amount);
-        }
-        throw new IllegalArgumentException("Expiration date not valid");
-    }
     public static String newCardToken(String cardNum, String expDate, String cscNum, String cardType, String avsAddress, String avsZip, String description){
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost postRequest = new HttpPost("https://gateway-sb.clearent.net/rest/v2/tokens");
 
-            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"card-type\":\""+ cardType+"\",\"exp-date\":\"" + expDate + "\",\"csc\":\"" +cscNum +"\", \"avs-address\":\"\"" +avsAddress +"\",\"avs-zip\":\"" +avsZip +"\",\"description\":\"\" +description +\"\"}");
+            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"card-type\":\""+ cardType+"\",\"exp-date\":\"" + expDate + "\",\"csc\":\"" +cscNum +"\", \"avs-address\":\"" +avsAddress +"\",\"avs-zip\":\"" +avsZip +"\",\"description\":\"" +description +"\"}");
             input.setContentType("application/json");
             postRequest.setEntity(input);
 
@@ -106,4 +94,9 @@ public class cardService {
         }
         return "error";
     }
+
+
+
+
+
 }

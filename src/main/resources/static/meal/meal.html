@@ -1,0 +1,30 @@
+<br><br>
+<div ng-show="!codeSuccessful">
+    <h4>Complete the information below to retrieve a one-time use code</h4>
+
+    <label>Recipient Name</label>
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="">
+    </div>
+    <label>Please re-enter your password access code</label>
+
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="">
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-success" ng-click="getCode()">Get a meal code</button>
+</div>
+
+<div ng-show="codeSuccessful">
+    <h2>Your one time use code is:</h2>
+
+    <div class="alert alert-success" role="alert">
+        <h2 class="code"> {{code}}</h2>
+    </div>
+    <div class="alert alert-warning" role="alert">This code will expire in 3 days.</div>
+    <br>
+    Please provide this code to the meal recipient. This code may be used at all participating food establishments.
+    <br><br>
+    <button type="button" class="btn btn-success" ng-click="codeSuccessful=false">Retrieve another code</button>
+</div>

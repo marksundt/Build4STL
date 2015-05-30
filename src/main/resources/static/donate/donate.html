@@ -1,0 +1,93 @@
+
+<div ng-show="!donationSuccessful">
+    <h3>Welcome {{name}}!</h3>
+    <div type="text" ><h5>Please confirm your donation details below</h5></div>
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="1">
+      </span>
+                <input type="text" class="form-control" disabled value="$1 - Your donation helps feed someone today">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="5">
+      </span>
+                <input type="text" class="form-control" disabled value="$5 - Feed lunch to someone who is hungry today">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="8">
+      </span>
+                <input type="text" class="form-control" disabled
+                       value="$8 - Feed dinner to someone who is hungry today">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="">
+      </span>
+                <input type="text" class="form-control" placeholder="Other amount">
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Large button group -->
+    <div class="btn-group" dropdown>
+        <button class="btn btn-default col-lg-6 dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-expanded="false">
+            {{dropDownLabel}} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li ng-click="setCard('5935')"><a href="">Donate using card ending in 5935</a></li>
+            <li ng-click="setCard('1111')"><a href="">Donate using card ending in 1111</a></li>
+            <li class="divider"></li>
+            <li ng-click="setCard('new')"><a href="">Donate using another card</a></li>
+        </ul>
+    </div>
+
+
+    <div ng-show="newCard==true">
+        <br><br>
+        <label>Card Number</label>
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="####-####-####-####">
+        </div>
+        <label>Expiration Date</label>
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="MM/YY">
+
+        </div>
+        <label>Security Code</label>
+
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
+        </div>
+
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-success" ng-click="donationSuccessful=true">Donate Now!</button>
+</div>
+
+
+<div ng-show="donationSuccessful">
+    <h2>Thank you for your donation. You are helping to feed to keep St. Louis fed!</h2>
+    <button type="button" class="btn btn-primary btn-success btn-donate" ng-click="donationSuccessful=false">Make another donation</button>
+</div>
