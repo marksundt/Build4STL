@@ -20,7 +20,7 @@ public class cardService {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost postRequest = new HttpPost("https://gateway-sb.clearent.net/rest/v2/tokens");
 
-            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"card-type\":\""+ cardType+"\",\"exp-date\":\"" + expDate + "\",\"csc\":\"" +cscNum +"\", \"avs-address\":\"\"" +avsAddress +"\",\"avs-zip\":\"" +avsZip +"\",\"description\":\"\" +description +\"\"}");
+            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"card-type\":\""+ cardType+"\",\"exp-date\":\"" + expDate + "\",\"csc\":\"" +cscNum +"\", \"avs-address\":\"" +avsAddress +"\",\"avs-zip\":\"" +avsZip +"\",\"description\":\"" +description +"\"}");
             input.setContentType("application/json");
             postRequest.setEntity(input);
 

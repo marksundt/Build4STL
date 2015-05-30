@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('WebApp')
-    .controller('LoginCtrl', ['LoginService', 'AuthService', function(LoginService, AuthService) {
+    .controller('LoginCtrl', ['LoginService', 'AuthService','$location', function(LoginService, AuthService,$location) {
 
         var vm = this;
         vm.credentials = {
@@ -14,7 +14,10 @@ angular
 
         // Logs user in with credentials
         function login(){
-            LoginService.login(vm.credentials);
+            var auth = LoginService.login(vm.credentials);
+            if (auth.authenticated){
+                $location.path('/donate');
+            }
         }
 
         // Logs the user out from the AuthService, and with the server
