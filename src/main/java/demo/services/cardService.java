@@ -14,19 +14,7 @@ import java.net.MalformedURLException;
 
 public class cardService {
 
-    public static void testing(String expDate, String card, String amount) {
 
-
-        String regexDate = "\\d\\d\\d\\d";
-        String chargeResponse;
-        //TODO: check that the date is valid (month is 1-12 and date is after today's date. Verify card number is valid and amount charged is a boolean in dollar format
-
-        if(expDate.matches(regexDate)) {
-
-                chargeResponse = chargeCard(card, expDate, amount);
-        }
-        throw new IllegalArgumentException("Expiration date not valid");
-    }
     public static String newCardToken(String cardNum, String expDate, String cscNum, String cardType, String avsAddress, String avsZip, String description){
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -106,4 +94,9 @@ public class cardService {
         }
         return "error";
     }
+
+
+
+
+
 }
