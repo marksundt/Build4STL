@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 
 public class cardService {
 
-    public static void testing(String expDate, String card, double amount) {
+    public static void testing(String expDate, String card, String amount) {
 
 
         String regexDate = "\\d\\d\\d\\d";
@@ -28,12 +28,12 @@ public class cardService {
         throw new IllegalArgumentException("Expiration date not valid");
     }
 
-    public static String chargeCard(String cardNum, String expDate, double charge){
+    public static String chargeCard(String cardNum, String expDate, String charge){
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost postRequest = new HttpPost("https://gateway-sb.clearent.net/rest/v2/transactions");
 
-            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":cardNum,\"exp-date\":expDate, \"amount\":charge, \"type\":\"sale\"}");
+            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"exp-date\":\"" + expDate + "\",\"amount\":\"" +charge +"\", \"type\":\"sale\"}");
             input.setContentType("application/json");
             postRequest.setEntity(input);
 
@@ -41,7 +41,15 @@ public class cardService {
 
             if (response.getStatusLine().getStatusCode() != 200) {
 
-                throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode() + "error response " + response.getEntity().toString());
+                BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+                String output;
+                System.out.println("Output from Server .... \n");
+                while ((output = br.readLine()) != null) {
+                    System.out.println(output);
+                }
+
+                   throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode() + "error response " + response.getEntity().toString());
             }
             BufferedReader br = new BufferedReader(
                 new InputStreamReader((response.getEntity().getContent())));
