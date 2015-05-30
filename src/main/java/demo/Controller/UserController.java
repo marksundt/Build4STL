@@ -21,4 +21,11 @@ public class UserController {
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
+    @RequestMapping("/user/createCard")
+    public ResponseEntity<String> createCard() {
+        cardService cardService = new cardService();
+        String result = cardService.chargeCard("4111111111111111", "0919", "2.00");
+        return new ResponseEntity(result, HttpStatus.OK);
+    }
+
 }
