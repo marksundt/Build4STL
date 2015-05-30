@@ -4300,6 +4300,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-form .input-group .input-group-btn,
   .navbar-form .input-group .form-control {
     width: auto;
+      padding-bottom:20px;
   }
   .navbar-form .input-group > .form-control {
     width: 100%;
