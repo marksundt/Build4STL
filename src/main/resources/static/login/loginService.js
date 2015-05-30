@@ -21,8 +21,10 @@ angular
         // Submit login information
         function login(credentials){
             // post login
+            var level = (credentials.username.substring(0,1).toLowerCase() == 'a' ? 'admin' : 'user');
             var auth = {
-                'name': credentials.name,
+                'name': 'Bob',
+                'level': level,
                 'authenticated': true,
                 'loginError' : false
             };
@@ -37,26 +39,12 @@ angular
             // creates an empty object, and hopefully scope isn't all wacked.
             var auth = {
                 'name': "",
+                'level':"",
                 'authenticated': false,
                 'loginError' : false
             };
             // store the "empty" auth to AuthService
             AuthService.setAuth(auth);
-        }
-
-        // Creates an auth from the response of GET /user
-        function setAuthFromData(data) {
-            // If data contains the name object, then it wasn't the /login redirect that
-            // happens when a unauthorized user attempts to access /user
-            if(data.data.name) {
-                var auth = {
-                    'name': data.data.name,
-                    'authenticated': data.data.authenticated,
-                    'loginError' : false
-                };
-                // Store this auth to the service
-                AuthService.setAuth(auth);
-            }
         }
 
     }]);
