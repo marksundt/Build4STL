@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @RestController
 public class UserController {
-
+	
     @RequestMapping("/user")
     public Principal getPrincipal(Principal user) {
         return user;
