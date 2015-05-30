@@ -15,6 +15,8 @@ import java.net.MalformedURLException;
 public class cardService {
 
     public static void testing(String expDate, String card, double amount) {
+
+
         String regexDate = "\\d\\d\\d\\d";
         String chargeResponse;
         //TODO: check that the date is valid (month is 1-12 and date is after today's date. Verify card number is valid and amount charged is a boolean in dollar format
@@ -31,7 +33,7 @@ public class cardService {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpPost postRequest = new HttpPost("https://gateway-sb.clearent.net/rest/v2/transactions");
 
-            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"cardNum\",\"exp-date\":\"expDate\", \"amount\":\"charge\", \"type\":\"sale\"}");
+            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":cardNum,\"exp-date\":expDate, \"amount\":charge, \"type\":\"sale\"}");
             input.setContentType("application/json");
             postRequest.setEntity(input);
 
@@ -49,7 +51,7 @@ public class cardService {
                 System.out.println(output);
             }
             httpClient.getConnectionManager().shutdown();
-            return output;
+            return "Success";
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
