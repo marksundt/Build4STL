@@ -27,6 +27,45 @@ public class cardService {
         }
         throw new IllegalArgumentException("Expiration date not valid");
     }
+    public static String newCardToken(String cardNum, String expDate, String cscNum, String cardType, String avsAddress, String avsZip, String description){
+        try {
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost postRequest = new HttpPost("https://gateway-sb.clearent.net/rest/v2/tokens");
+
+            StringEntity input = new StringEntity("{\"api-key\":\"94a4d359977c47168ba4a9395496fa94\",\"card\":\"" + cardNum + "\",\"card-type\":\""+ cardType+"\",\"exp-date\":\"" + expDate + "\",\"csc\":\"" +cscNum +"\", \"avs-address\":\"\"" +avsAddress +"\",\"avs-zip\":\"" +avsZip +"\",\"description\":\"\" +description +\"\"}");
+            input.setContentType("application/json");
+            postRequest.setEntity(input);
+
+            org.apache.http.HttpResponse response = httpClient.execute(postRequest);
+
+            if (response.getStatusLine().getStatusCode() != 200) {
+
+                BufferedReader br = new BufferedReader(
+                    new InputStreamReader((response.getEntity().getContent())));
+                String output;
+                System.out.println("Output from Server .... \n");
+                while ((output = br.readLine()) != null) {
+                    System.out.println(output);
+                }
+
+                throw new RuntimeException("Failed : HTTP error code : " + response.getStatusLine().getStatusCode() + "error response " + response.getEntity().toString());
+            }
+            BufferedReader br = new BufferedReader(
+                new InputStreamReader((response.getEntity().getContent())));
+            String output;
+            System.out.println("Output from Server .... \n");
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+            }
+            httpClient.getConnectionManager().shutdown();
+            return "Successfully created a token";
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "error";
+    }
 
     public static String chargeCard(String cardNum, String expDate, String charge){
         try {
