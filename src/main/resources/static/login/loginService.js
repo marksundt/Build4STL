@@ -14,41 +14,26 @@ angular
         // Get an auth object for authenticated users
         function getAuthentication(){
 
-            // If the user isn't currently authenticated
-            if(!AuthService.getAuth().authenticated){
-                // Fetch user from server
-                RestService.getUser()
-                    // create an auth
-                    .then(function(data){
-                        setAuthFromData(data);
-                    });
-            }
+
+            return AuthService.getAuth();
         }
 
         // Submit login information
         function login(credentials){
             // post login
-            RestService.postLogin(credentials)
-                // once the call is resolved
-                .then(function(){
-                    // attempt to get user's authentication
-                    RestService.getUser()
-                        // and create an auth from it
-                        .then(function(data){
-                            setAuthFromData(data);
-                            // redirect home
-                            if(AuthService.isAuth()){
-                                $location.path("/");
-                            }
-                        });
-            });
+            var auth = {
+                'name': credentials.name,
+                'authenticated': true,
+                'loginError' : false
+            };
+            AuthService.setAuth(auth);
             // and return the auth for good measure
             return AuthService.getAuth();
         }
 
         // Logs out the user from the server
         function logout(){
-            RestService.postLogout();
+            //RestService.postLogout();
             // creates an empty object, and hopefully scope isn't all wacked.
             var auth = {
                 'name': "",
