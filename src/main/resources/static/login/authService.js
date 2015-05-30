@@ -21,16 +21,14 @@ angular
         // Sets the authentication of the user
         function setAuth(_auth_){
             vm.auth = _auth_;
+            console.dir(_auth_);
+            console.log(isAuth());
         }
 
         // returns if the user is authenticated or not
         function isAuth(){
             //console.log("Going to check auth on: " + JSON.stringify(vm.auth));
-            if (vm.auth.authenticated == true){
-                return true;
-            } else {
-                return false;
-            }
+            return (vm.auth.authenticated)
         }
 
     });
