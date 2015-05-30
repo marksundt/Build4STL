@@ -1,0 +1,83 @@
+
+<br><br>
+
+<h3>Welcome {{name}}!</h3>
+
+Pleae confirm your donation details below.
+
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="1">
+      </span>
+            <input type="text" class="form-control" disabled value="$1 - Your donation helps feed someone today">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="5">
+      </span>
+            <input type="text" class="form-control" disabled value="$5 - Feed lunch to someone who is hungry today">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="8">
+      </span>
+            <input type="text" class="form-control" disabled value="$8 - Feed dinner to someone who is hungry today">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="input-group">
+      <span class="input-group-addon">
+        <input type="radio" name="amount" ng-model="tran.amount" value="">
+      </span>
+            <input type="text" class="form-control" placeholder="Other amount">
+        </div>
+    </div>
+</div>
+
+
+<!-- Large button group -->
+<div class="btn-group">
+    <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        Select donation payment method <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Donate using card ening in 5935</a></li>
+        <li><a href="#">Donate using card ening in 1111</a></li>
+        <li class="divider"></li>
+        <li><a ng-click="newCard=true" href="#">Donate using another card</a></li>
+    </ul>
+</div>
+
+
+
+<label>Name</label>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="First name and last name" aria-describedby="basic-addon2">
+</div>
+<label>Email Address</label>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="Email Address" aria-describedby="basic-addon2">
+    <span class="input-group-addon" id="basic-addon2">@example.com</span>
+</div>
+<label>Phone Number</label>
+<div class="input-group">
+    <input type="text" class="form-control" placeholder="###-###-####" aria-describedby="basic-addon2">
+</div>
+
+<label>Password</label>
+<div class="input-group">
+    <input type="password" class="form-control" aria-describedby="basic-addon2">
+</div>
