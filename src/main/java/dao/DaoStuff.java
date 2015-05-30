@@ -136,7 +136,7 @@ public class DaoStuff {
             String body = "{\"amount\":" + "\"" + amount + "\"}";
             // String body = "{\"userID_token\":" + "\"" + tokens.get(i) + "\"}";
             //System.out.println(body);
-            String basicAuth = "Basic YmE2YzEwM2YtOTY2ZS00Yzc2LWIwY2UtNjI0ODQ0YTI3OTU1Og==";
+            String basicAuth = " Basic OWJkYjAzZjAtYjY2Yi00ODBlLWFlZjgtYjdjYzQ5YTNlMmJkOg==";
             connection.setRequestProperty ("Authorization", basicAuth);
             connection.setRequestProperty("Content-Length",
                 Integer.toString(body.getBytes().length));
@@ -180,18 +180,15 @@ public class DaoStuff {
     public  RedemptionCode redeemCode() {
         HttpURLConnection connection = null;
         try {
-             String targetURL = "\"https://api.orchestrate.io/v0/redemption";
+            String testTarget = "https://api.orchestrate.io/v0/redemption";
             //Create connection
-            URL url = new URL(targetURL + "?limit=1");
+            URL url = new URL(testTarget);
             connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("get");
-            connection.setRequestProperty("Content-Type",
-                "application/json");
-
-
-            String basicAuth = "Basic YmE2YzEwM2YtOTY2ZS00Yzc2LWIwY2UtNjI0ODQ0YTI3OTU1Og==";
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+            String basicAuth = "Basic OWJkYjAzZjAtYjY2Yi00ODBlLWFlZjgtYjdjYzQ5YTNlMmJkOg==";
             connection.setRequestProperty("Authorization", basicAuth);
-            connection.setRequestProperty("Content-Language", "en-US");
+
 
             connection.setUseCaches(false);
             connection.setDoOutput(true);
@@ -216,19 +213,21 @@ public class DaoStuff {
             RedemptionCode code = new RedemptionCode();
 
             code.setPhone("3148050537");
-            code.setCode("ABC3444");
+            //  code.setCode(Math.random();
 
             return code;
 
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new IllegalArgumentException();
+            RedemptionCode code = new RedemptionCode();
 
+            code.setPhone("3148050537");
+            code.setCode("1234rrrr");
+  return code;
         } finally {
             if (connection != null) {
                 connection.disconnect();
             }
         }
-    }
-}
+    }}
