@@ -13,6 +13,7 @@ angular
 
         // Checks to see if the user is authenticated
         function isAuth(){
+            console.log("home is auth"+AuthService.isAuth() );
             return AuthService.isAuth();
         }
 
