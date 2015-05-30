@@ -1,10 +1,7 @@
-<br><br>
 
 <div ng-show="!donationSuccessful">
     <h3>Welcome {{name}}!</h3>
-
-
-    Pleae confirm your donation details below.
+    <div type="text" ><h5>Please confirm your donation details below</h5></div>
 
 
     <div class="row">
@@ -52,7 +49,7 @@
 
     <!-- Large button group -->
     <div class="btn-group" dropdown>
-        <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+        <button class="btn btn-default col-lg-6 dropdown-toggle" type="button" data-toggle="dropdown"
                 aria-expanded="false">
             {{dropDownLabel}} <span class="caret"></span>
         </button>
@@ -92,5 +89,5 @@
 
 <div ng-show="donationSuccessful">
     <h2>Thank you for your donation. You are helping to feed to keep St. Louis fed!</h2>
-    <button type="button" class="btn btn-success" ng-click="donationSuccessful=false">Make another donation</button>
+    <button type="button" class="btn btn-primary btn-success btn-donate" ng-click="donationSuccessful=false">Make another donation</button>
 </div>
