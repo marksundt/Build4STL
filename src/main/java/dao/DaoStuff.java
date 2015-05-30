@@ -177,7 +177,7 @@ public class DaoStuff {
 
 
 
-    public  RedemptionCode redeamCode() {
+    public  RedemptionCode redeemCode() {
         HttpURLConnection connection = null;
         try {
              String targetURL = "\"https://api.orchestrate.io/v0/redemption";
@@ -212,7 +212,7 @@ public class DaoStuff {
                 response.append('\r');
             }
             rd.close();
-
+            System.out.println("---------------------------------------------------------------------" + response);
             RedemptionCode code = new RedemptionCode();
 
             code.setPhone("3148050537");
