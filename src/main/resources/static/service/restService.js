@@ -1,45 +1,38 @@
-'use strict';
+
 angular
     .module('WebApp')
-    .service('RestService',['$http', function($http) {
+    .service('RestService', ['$http', '$log', function ($http, $log) {
 
-        var vm = this;
-        vm.postLogin = postLogin;
-        vm.postLogout = postLogout;
-        vm.getUser = getUser;
-
-        // url endpoints
-        vm.URL = {
-            LOGIN : "login",
-            LOGOUT : "logout",
-            USER : "user"
+        this.donate = function (donateRequest) {
+            var url = 'http://localhost:8080/user/donate';
+            var donationObject = {
+                method: 'POST',
+                url: url,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                data: donateRequest
+            };
+            return $http(donationObject);
         };
 
-        // submits a POST to /login, in the format Spring is expecting
-        function postLogin(credentials) {
+        this.redeemCode = function (redeemRequest) {
+            var url = 'http://localhost:8080/user/redeemCode';
+            var redeemObject = {
+                method: 'POST',
+                url: url,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                data: redeemRequest
+            };
+            return $http(redeemObject);
+        };
 
-            // Formats the request into a url encoded login, which is what Spring expects
-            var data = 'username=' + encodeURIComponent(credentials.username) +
-                '&password=' + encodeURIComponent(credentials.password);
-
-            // Sets content type headers (as opposed to JSON, which would not be expected)
-            var config = {
-                headers : {
-                    "content-type" : "application/x-www-form-urlencoded"
-            }};
-
-            //Return the promise
-            return $http.post(vm.URL.LOGIN,data,config);
-        }
-
-        // a POST to /logout tells Spring to deauthorize user
-        function postLogout() {
-            return $http.post(vm.URL.LOGOUT,{});
-        }
-
-        // returns the principle from Spring, a protected resource
-        function getUser() {
-            return $http.get(vm.URL.USER);
-        }
+        this.post = function post(req){
+            return $http(req);
+        };
 
     }]);

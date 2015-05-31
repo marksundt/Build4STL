@@ -2,7 +2,7 @@
 <div ng-show="!donationSuccessful">
     <h3>Welcome {{name}}!</h3>
     <div type="text" ><h5>Please confirm your donation details below</h5></div>
-
+    <div ng-show="errorMessage.length>0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
     <div class="row">
         <div class="col-lg-6">
@@ -39,9 +39,9 @@
         <div class="col-lg-6">
             <div class="input-group">
       <span class="input-group-addon">
-        <input type="radio" name="amount" ng-model="tran.amount" value="">
+        <input type="radio" name="amount" value="">
       </span>
-                <input type="text" class="form-control" placeholder="Other amount">
+                <input ng-model="tran.amount" type="text" class="form-control" placeholder="Other amount">
             </div>
         </div>
     </div>
@@ -65,25 +65,25 @@
     <div ng-show="newCard==true">
         <br><br>
         <label>Card Number</label>
-
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="####-####-####-####">
+            <input ng-model="tran.card" type="text" class="form-control" placeholder="####-####-####-####">
         </div>
         <label>Expiration Date</label>
 
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="MM/YY">
-
+            <input ng-model="tran.expDate" type="text" class="form-control" placeholder="MM/YY">
         </div>
         <label>Security Code</label>
-
         <div class="input-group">
             <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2">
         </div>
-
+        <label>Phone</label>
+        <div class="input-group">
+            <input ng-model="tran.phone" type="text" class="form-control" placeholder="###-###-####" aria-describedby="basic-addon2">
+        </div>
     </div>
     <br><br>
-    <button type="button" class="btn btn-success" ng-click="donationSuccessful=true">Donate Now!</button>
+    <button type="button" class="btn btn-success" ng-click="makeDonation(tran)">Donate Now!</button>
 </div>
 
 

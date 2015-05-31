@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('WebApp')
-    .controller('DonateCtrl', ['$scope', '$http', 'AuthService','$location', function($scope, $http, AuthService,$location){
+    .controller('DonateCtrl', ['$scope', '$http', 'AuthService','$location','RestService', function($scope, $http, AuthService,$location,RestService){
 
         var vm = this;
         vm.isAuth = isAuth;
@@ -15,6 +15,7 @@ angular
         $scope.newCard=false;
         $scope.dropDownLabel = 'Select donation payment method';
         $scope.donationSuccessful = false;
+        $scope.errorMessage = "";
 
         $scope.setCard = function(card){
             if (card=="new"){
@@ -25,6 +26,22 @@ angular
                 $scope.newCard=false;
             }
 
+        };
+
+        $scope.makeDonation=function(tran) {
+            console.dir(tran);
+            RestService.donate(tran)
+                .success(function(data){
+                    $scope.donationSuccessful = true;
+                    $scope.errorMessage = "";
+                    console.log('here is the data');
+                    console.dir(data);
+                })
+                .error(function(data){
+                    $scope.errorMessage = "Opps";
+                    console.log('here is the error');
+                    console.dir(data);
+                });
         };
 
         // Checks to see if the user is authenticated
