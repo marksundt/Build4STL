@@ -32,7 +32,7 @@ angular
         // Logs the user out from the AuthService, and with the server
         function logout() {
             LoginService.logout();
-
+            $location.path('/');
         }
 
         // Returns T/F if user is authenticated

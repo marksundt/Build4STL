@@ -51,8 +51,8 @@ public class UserController {
         RedemptionCode code = dao.redeemCode();
         thankYou  thankYou = new thankYou();
 
-        String sid =
-        String authToken=
+        String sid = "AC7daeeb8449a628e01bf100be6de93efb";
+        String authToken= "d7e46612e244bd7789d9223ab56db9d9";
         thankYou.thankYou(sid, authToken, code.getPhone(),code.getName(), req.getName(), "http://feed/stl/login");
         thankYou.redeemCode(sid, authToken, req.getName(), req.getPhone(), code.getCode());
         return new ResponseEntity(code, HttpStatus.OK);
