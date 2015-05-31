@@ -1,16 +1,20 @@
 <br><br>
 <div ng-show="!codeSuccessful">
-    <h4>Complete the information below to retrieve a one-time use code</h4>
-
+    <h3>Complete the information below to retrieve a one-time use code</h3>
+<br>
     <div ng-show="errorMessage.length>0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
     <label>Recipient Name</label>
-
     <div class="form-group">
         <input ng-model="tran.name" type="text" class="form-control" placeholder="">
     </div>
-    <label>Please re-enter your password access code</label>
 
+    <label>Mobile Phone Number (optional, we will text the redemption code to this number if provided)</label>
+    <div class="form-group">
+        <input ng-model="tran.phone" type="text" class="form-control" placeholder="###-###-####" >
+    </div>
+
+    <label>Please re-enter your password access code</label>
     <div class="form-group">
         <input type="password" class="form-control" placeholder="">
     </div>
@@ -26,7 +30,9 @@
     </div>
     <div class="alert alert-warning" role="alert">This code will expire in 3 days.</div>
     <br>
-    Please provide this code to the meal recipient. This code may be used at all participating food establishments.
+    Please provide this code to the meal recipient. If you provided a phone number,
+    then the recipient will also receive a text message with this code.
+    This code may be used at all participating food establishments.
     <br><br>
     <button type="button" class="btn btn-success" ng-click="codeSuccessful=false">Retrieve another code</button>
 </div>
