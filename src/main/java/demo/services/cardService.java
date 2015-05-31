@@ -81,9 +81,10 @@ public class cardService {
             BufferedReader br = new BufferedReader(
                 new InputStreamReader((response.getEntity().getContent())));
             String output;
+            String result = null;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
-                output = output + output;
+                result = result + output;
             }
             httpClient.getConnectionManager().shutdown();
             return output;
