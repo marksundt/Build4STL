@@ -15,6 +15,12 @@ angular
         $scope.codeSuccessful = false;
 
         $scope.redeemCode=function(tran) {
+            if (tran.name){
+                stripAlpha(tran.name);
+            }
+            if (tran.phone){
+                stripAlpha(tran.phone);
+            }
             console.dir(tran);
             RestService.redeemCode(tran)
                 .success(function(data){
@@ -31,6 +37,14 @@ angular
                     console.dir(data);
                 });
         };
+
+        function stripAlpha(s,allowDecimal){
+            if(allowDecimal){
+                return s.replace(/[^0-9\.]+/g, '');
+            } else {
+                return s.replace(/[^0-9]+/g, '');
+            }
+        }
 
         // Checks to see if the user is authenticated
         function isAuth(){

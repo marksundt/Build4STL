@@ -29,6 +29,15 @@ angular
         };
 
         $scope.makeDonation=function(tran) {
+            if (tran.card){
+                stripAlpha(tran.card);
+            }
+            if (tran.expDate){
+                stripAlpha(tran.expDate);
+            }
+            if (tran.phone){
+                stripAlpha(tran.phone);
+            }
             console.dir(tran);
             RestService.donate(tran)
                 .success(function(data){
@@ -43,6 +52,14 @@ angular
                     console.dir(data);
                 });
         };
+
+        function stripAlpha(s,allowDecimal){
+            if(allowDecimal){
+                return s.replace(/[^0-9\.]+/g, '');
+            } else {
+                return s.replace(/[^0-9]+/g, '');
+            }
+        }
 
         // Checks to see if the user is authenticated
         function isAuth(){
