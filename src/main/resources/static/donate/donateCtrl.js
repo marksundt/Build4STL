@@ -30,13 +30,13 @@ angular
 
         $scope.makeDonation=function(tran) {
             if (tran.card){
-                stripAlpha(tran.card);
+                tran.card = stripAlpha(tran.card);
             }
             if (tran.expDate){
-                stripAlpha(tran.expDate);
+                tran.expDate = stripAlpha(tran.expDate);
             }
             if (tran.phone){
-                stripAlpha(tran.phone);
+                tran.phone = stripAlpha(tran.phone);
             }
             console.dir(tran);
             RestService.donate(tran)

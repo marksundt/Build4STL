@@ -1,7 +1,12 @@
 <div class="alert alert-danger" ng-show="error">
     There was a problem logging in. Please try again.
 </div>
+<div class="page-header">
+    <h2>Please login to continue</h2>
+</div>
 <form role="form" ng-submit="loginCtrl.login()">
+    <a href="#/register">Not yet registered?</a>
+    <br><br><br>
     <div class="form-group">
         <label for="username">Email Address:</label> <input type="text" class="form-control" id="username" name="username" ng-model="loginCtrl.credentials.username"/>
     </div>

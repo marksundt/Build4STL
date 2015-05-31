@@ -15,11 +15,8 @@ angular
         $scope.codeSuccessful = false;
 
         $scope.redeemCode=function(tran) {
-            if (tran.name){
-                stripAlpha(tran.name);
-            }
             if (tran.phone){
-                stripAlpha(tran.phone);
+                tran.phone = stripAlpha(tran.phone);
             }
             console.dir(tran);
             RestService.redeemCode(tran)

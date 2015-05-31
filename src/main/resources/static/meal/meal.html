@@ -1,6 +1,9 @@
-<br><br>
+
 <div ng-show="!codeSuccessful">
-    <h3>Complete the information below to retrieve a one-time use code</h3>
+    <div class="page-header">
+        <h2>Complete the information below to retrieve a one-time use code</h2>
+    </div>
+
 <br>
     <div ng-show="errorMessage.length>0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
@@ -23,6 +26,10 @@
 </div>
 
 <div ng-show="codeSuccessful">
+    <div class="page-header">
+        <h2>Please share this code with a person in need</h2>
+    </div>
+
     <h2>Your one time use code is:</h2>
 
     <div class="alert alert-success" role="alert">

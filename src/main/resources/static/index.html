@@ -28,7 +28,7 @@
                     <li  ng-show="loginCtrl.getAuth().level=='admin'"><a href="#/meal">get a meal code</a></li>
                     <li ng-show="!loginCtrl.isAuth()"><a href="#/register">register</a></li>
                     <li  ng-show="!loginCtrl.isAuth()"><a href="#/login">login</a></li>
-                    <li ><a href="" ng-click="loginCtrl.logout()">logout</a></li>
+                    <li ng-show="loginCtrl.isAuth()"><a href="" ng-click="loginCtrl.logout()">logout</a></li>
                 </ul>
             </div>
         </div>

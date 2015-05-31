@@ -1,6 +1,8 @@
 
 <div ng-show="!donationSuccessful">
-    <h3>Welcome {{name}}!</h3>
+    <div class="page-header">
+        <h2>You donation helps fed hungry people today</h2>
+    </div>
     <div type="text" ><h5>Please confirm your donation details below</h5></div>
     <div ng-show="errorMessage.length>0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
@@ -88,6 +90,9 @@
 
 
 <div ng-show="donationSuccessful">
-    <h2>Thank you for your donation. You are helping to keep St. Louis fed!</h2>
+    <div class="page-header">
+        <h2>Thank you for your donation!</h2>
+    </div>
+    <h3>You are helping to keep St. Louis fed.</h3>
     <button type="button" class="btn btn-primary btn-success btn-donate" ng-click="donationSuccessful=false">Make another donation</button>
 </div>
