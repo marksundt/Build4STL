@@ -15,16 +15,26 @@
 </head>
 <body ng-app="WebApp" ng-cloak class="ng-cloak">
 <div ng-controller="LoginCtrl as loginCtrl" class="container">
-    <ul class="nav nav-pills" role="tablist">
-        <li ng-class="{active:tab('home')}"><a href="#/">about us</a></li>
-        <li><a href="#/donate">donate</a></li>
-        <li ng-show="loginCtrl.getAuth().level=='admin'"><a href="#/meal">get a meal code</a></li>
-        <li ng-show="!loginCtrl.isAuth()"><a href="#/register">register</a></li>
-        <li ng-show="!loginCtrl.isAuth()"><a href="#/login">login</a></li>
-        <li ng-show="loginCtrl.isAuth()"><a href="" ng-click="loginCtrl.logout()">logout</a></li>
-    </ul>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">FEED</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ><a href="#/">about us</a></li>
+                    <li ><a href="#/donate">donate</a></li>
+                    <li  ng-show="loginCtrl.getAuth().level=='admin'"><a href="#/meal">get a meal code</a></li>
+                    <li ng-show="!loginCtrl.isAuth()"><a href="#/register">register</a></li>
+                    <li  ng-show="!loginCtrl.isAuth()"><a href="#/login">login</a></li>
+                    <li ><a href="" ng-click="loginCtrl.logout()">logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
-{{loginCtrl.getAuth().level}}
+
 
 <div ng-view class="container"></div>
     <script type="text/javascript" src="jquery/jquery-1.11.3.min.js"></script>
