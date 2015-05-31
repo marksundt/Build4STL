@@ -38,7 +38,7 @@ public class thankYou {
         // Build the parameters
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("From", "+16362006384"));  //need to change from number
-        params.add(new BasicNameValuePair("Body", "Hey " + recipientNmae + "Here is your redemption code:" + code));
+        params.add(new BasicNameValuePair("Body", "Hey " + recipientNmae + " Here is your redemption code:" + code));
         params.add(new BasicNameValuePair("To", reciepientPhone));
 
         MessageFactory messageFactory = client.getAccount().getMessageFactory();

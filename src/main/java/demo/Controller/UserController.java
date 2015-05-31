@@ -48,11 +48,13 @@ public class UserController {
     public ResponseEntity<String> redeemCode (@RequestBody RedeemRequest req)  throws Exception{
         DaoStuff dao = new DaoStuff();
 
-       RedemptionCode code = dao.redeemCode();
+        RedemptionCode code = dao.redeemCode();
         thankYou  thankYou = new thankYou();
 
-        thankYou.thankYou("SID", "AUTHTOKEN", code.getPhone(),code.getName(), req.getName(), "http://feed/stl/login");
-        thankYou.redeemCode("SID", "AUTHTOKEN", req.getName(), req.getPhone(), code.getCode());
+        String sid =
+        String authToken=
+        thankYou.thankYou(sid, authToken, code.getPhone(),code.getName(), req.getName(), "http://feed/stl/login");
+        thankYou.redeemCode(sid, authToken, req.getName(), req.getPhone(), code.getCode());
         return new ResponseEntity(code, HttpStatus.OK);
     }
 

@@ -8,6 +8,8 @@ public class RedeemRequest {
     public String name;
     public String phone;
 
+
+
     public String getName() {
         return name;
     }
