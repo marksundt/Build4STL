@@ -1,6 +1,7 @@
 package demo.Controller;
 import dao.DaoStuff;
 import demo.domain.Card;
+import demo.domain.RedeemRequest;
 import demo.domain.RedemptionCode;
 import demo.services.cardService;
 import org.springframework.http.HttpStatus;
@@ -44,14 +45,14 @@ public class UserController {
     }
 
     @RequestMapping("/user/redeemCode")
-    public ResponseEntity<String> redeemCode(String name) throws Exception{
+    public ResponseEntity<String> redeemCode (@RequestBody RedeemRequest req)  throws Exception{
         DaoStuff dao = new DaoStuff();
 
        RedemptionCode code = dao.redeemCode();
         thankYou  thankYou = new thankYou();
 
-        thankYou.thankYou("SID", "AUTHTOKEN", code.getPhone(),code.getName(), name,"http://feed/stl/login");
-
+        thankYou.thankYou("SID", "AUTHTOKEN", code.getPhone(),code.getName(), req.getName(), "http://feed/stl/login");
+        thankYou.redeemCode("SID", "AUTHTOKEN", req.getName(), req.getPhone(), code.getCode());
         return new ResponseEntity(code, HttpStatus.OK);
     }
 
