@@ -9,6 +9,7 @@ angular
         vm.isAuth = isAuth;
         vm.auth = {
             'name': "",
+            'level':"",
             'authenticated': false,
             'loginError' : false
         };

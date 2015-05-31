@@ -177,7 +177,7 @@ public class DaoStuff {
 
 
 
-    public  RedemptionCode redeamCode() {
+    public  RedemptionCode redeemCode() {
         HttpURLConnection connection = null;
         try {
             String testTarget = "https://api.orchestrate.io/v0/redemption";
@@ -209,22 +209,26 @@ public class DaoStuff {
                 response.append('\r');
             }
             rd.close();
-
+            System.out.println("---------------------------------------------------------------------" + response);
             RedemptionCode code = new RedemptionCode();
+            //code = obj.getString("code");
 
-            code.setPhone("3148050537");
-            //  code.setCode(Math.random();
 
+            code.setCode(String.valueOf((Math.round(Math.random() * Math.pow(10, 13)))));
+            code.setPhone(String.valueOf((Math.round(Math.random() * Math.pow(10, 10)))));
             return code;
 
 
         } catch (Exception e) {
             e.printStackTrace();
             RedemptionCode code = new RedemptionCode();
+            //code = obj.getString("code");
 
-            code.setPhone("3148050537");
-            code.setCode("1234rrrr");
-  return code;
+
+            code.setCode(String.valueOf((Math.round(Math.random() * Math.pow(10, 13)))));
+            code.setPhone(String.valueOf((Math.round(Math.random() * Math.pow(10, 10)))));
+            return code;
+
         } finally {
             if (connection != null) {
                 connection.disconnect();

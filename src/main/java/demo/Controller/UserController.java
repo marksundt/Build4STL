@@ -38,16 +38,16 @@ public class UserController {
     @RequestMapping("/user/createCard")
     public ResponseEntity<String> createCard() {
         cardService cardService = new cardService();
-        String result = cardService.chargeCard("4111111111111111", "0919", "2.00");
+        String result = cardService.newCardToken("4111111111111111", "0919", "200", "VISA", "123 ave", "63105", "test");
 
         return new ResponseEntity(result, HttpStatus.OK);
     }
 
     @RequestMapping("/user/redeemCode")
-    public ResponseEntity<String> redeamCode(String name) {
+    public ResponseEntity<String> redeemCode(String name) {
         DaoStuff dao = new DaoStuff();
 
-       RedemptionCode code = dao.redeamCode();
+       RedemptionCode code = dao.redeemCode();
 
         return new ResponseEntity(code, HttpStatus.OK);
     }
