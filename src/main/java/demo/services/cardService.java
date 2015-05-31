@@ -83,10 +83,10 @@ public class cardService {
             String output;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
+                output = output + output;
             }
             httpClient.getConnectionManager().shutdown();
-            return "Success";
+            return output;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {

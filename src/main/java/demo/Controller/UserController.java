@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import demo.domain.User;
+import twilioService.thankYou;
 
 @RestController
 public class UserController {
@@ -18,10 +19,9 @@ public class UserController {
         cardService cardService = new cardService();
         String result = cardService.chargeCard(card.getCard(), "0919", card.getAmount());
 
-        if (result=="Success"){
+
             DaoStuff dao = new DaoStuff();
-            dao.storeAmount(card.getAmount(), card.getPhone());
-        }
+
         return new ResponseEntity(result, HttpStatus.OK);
 
     }
@@ -44,10 +44,13 @@ public class UserController {
     }
 
     @RequestMapping("/user/redeemCode")
-    public ResponseEntity<String> redeemCode(String name) {
+    public ResponseEntity<String> redeemCode(String name) throws Exception{
         DaoStuff dao = new DaoStuff();
 
        RedemptionCode code = dao.redeemCode();
+        thankYou  thankYou = new thankYou();
+
+        thankYou.thankYou("SID", "AUTHTOKEN", code.getPhone(),code.getName(), name,"http://feed/stl/login");
 
         return new ResponseEntity(code, HttpStatus.OK);
     }
