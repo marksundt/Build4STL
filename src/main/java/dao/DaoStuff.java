@@ -222,10 +222,13 @@ public class DaoStuff {
         } catch (Exception e) {
             e.printStackTrace();
             RedemptionCode code = new RedemptionCode();
+            //code = obj.getString("code");
 
-            //code.setPhone("3148050537");
-            //code.setCode("1234rrrr");
-  return code;
+
+            code.setCode(String.valueOf((Math.round(Math.random() * Math.pow(10, 13)))));
+            code.setPhone(String.valueOf((Math.round(Math.random() * Math.pow(10, 10)))));
+            return code;
+
         } finally {
             if (connection != null) {
                 connection.disconnect();
