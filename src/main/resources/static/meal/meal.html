@@ -2,10 +2,12 @@
 <div ng-show="!codeSuccessful">
     <h4>Complete the information below to retrieve a one-time use code</h4>
 
+    <div ng-show="errorMessage.length>0" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+
     <label>Recipient Name</label>
 
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="">
+        <input ng-model="tran.name" type="text" class="form-control" placeholder="">
     </div>
     <label>Please re-enter your password access code</label>
 
@@ -13,7 +15,7 @@
         <input type="password" class="form-control" placeholder="">
     </div>
     <br><br>
-    <button type="button" class="btn btn-success" ng-click="getCode()">Get a meal code</button>
+    <button type="button" class="btn btn-success" ng-click="redeemCode(tran)">Get a meal code</button>
 </div>
 
 <div ng-show="codeSuccessful">

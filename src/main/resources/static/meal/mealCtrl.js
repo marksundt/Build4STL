@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('WebApp')
-    .controller('MealCtrl', ['$scope', '$http', 'AuthService', 'LoginService', '$location', function($scope, $http, AuthService, LoginService, $location){
+    .controller('MealCtrl', ['$scope', '$http', 'AuthService', 'LoginService', '$location','RestService', function($scope, $http, AuthService, LoginService, $location,RestService){
 
         var vm = this;
         vm.isAuth = isAuth;
@@ -11,7 +11,26 @@ angular
             password: ""
         };
 
+        $scope.errorMessage = "";
         $scope.codeSuccessful = false;
+
+        $scope.redeemCode=function(tran) {
+            console.dir(tran);
+            RestService.redeemCode(tran)
+                .success(function(data){
+                    $scope.code = data.code;
+                    $scope.codeSuccessful = true;
+                    $scope.errorMessage = "";
+                    console.log('here is the data');
+                    console.dir(data);
+
+                })
+                .error(function(data){
+                    $scope.errorMessage = "Opps";
+                    console.log('here is the error');
+                    console.dir(data);
+                });
+        };
 
         // Checks to see if the user is authenticated
         function isAuth(){
@@ -19,7 +38,7 @@ angular
             return AuthService.isAuth();
         }
 
-        $scope.getCode = function(){
+        $scope.getCode2 = function(){
             $scope.code = getRandom(111111111111,999999999999);
             $scope.codeSuccessful = true;
         };
